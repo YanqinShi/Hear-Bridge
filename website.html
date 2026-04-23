@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Silent Partner - 手语翻译</title>
+	<!-- Bootstrap Core CSS -->
+	<link href="static/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Web Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300' rel='stylesheet' type='text/css'>
+	<!-- Flaticon CSS -->
+	<link href="static/fonts/flaticon/flaticon.css" rel="stylesheet">
+	<!-- font-awesome CSS -->
+	<link href="static/css/font-awesome.min.css" rel="stylesheet">
+	<!-- owl.carousel CSS -->
+	<link href="static/owl-carousel/owl.carousel.css" rel="stylesheet">
+	<link href="static/owl-carousel/owl.theme.css" rel="stylesheet">
+	<!-- Offcanvas CSS -->
+	<link href="static/css/hippo-off-canvas.css" rel="stylesheet">
+	<!-- animate CSS -->
+	<link href="static/css/animate.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="static/css/style.css" rel="stylesheet">
+	<!-- Responsive CSS -->
+	<link href="static/css/responsive.css" rel="stylesheet">
+
+	<script src="static/js/vendor/modernizr-2.8.1.min.js"></script>
+
+	<style>
+		/* 新增视频容器样式 */
+		.video-container {
+			background: #000;
+			width: 100%;
+			height: 450px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border-radius: 4px;
+		}
+		#signLanguageVideo {
+			max-width: 100%;
+			max-height: 100%;
+		}
+		.translation-controls {
+			padding: 30px;
+			background: #fcfcfc;
+			border: 1px solid #eee;
+			margin-top: 20px;
+		}
+		#errorTips {
+			color: #d9534f;
+			margin-top: 10px;
+			font-weight: bold;
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+<div id="st-container" class="st-container">
+	<div class="st-pusher">
+		<div class="st-content">
+			<div class="st-content-inner">
+				<header>
+					<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+						<div class="container">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" >
+									<span class="sr-only">切换导航</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<h1 class="logo"><a class="navbar-brand" href="Home.html"><img src="static/img/logo.jpg" alt=""></a></h1>
+							</div>
+
+							<div class="collapse navbar-collapse">
+								<ul class="nav navbar-nav navbar-right">
+									<li><a href="Home.html">主页</a></li>
+									<li class="dropdown"><a href="#" >关于 <b class="caret"></b></a>
+										<div class="submenu-wrapper submenu-wrapper-topbottom">
+											<div class="submenu-inner">
+												<ul class="dropdown-menu">
+													<li><a href="about-us.html">关于我们</a></li>
+													<li><a href="about-me.html">关于我</a></li>
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="dropdown active"><a href="#" >服务<b class="caret"></b></a>
+										<div class="submenu-wrapper submenu-wrapper-topbottom">
+											<div class="submenu-inner">
+												<ul class="dropdown-menu">
+													<li><a href="就业.html">就业机会</a></li>
+													<li><a href="Event2.html">手语翻译</a></li>
+													<li><a href="Event3.html">Silent E-shoes</a></li>
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li><a href="contact.html">联系我们</a></li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</header>
+
+				<section class="page-header-wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="page-header">
+									<h1>手语翻译演示</h1>
+								</div>
+								<ol class="breadcrumb">
+									<li><a href="#">主页</a></li>
+									<li><a href="#">服务</a></li>
+									<li class="active">手语翻译</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="container">
+					<div class="content-wrapper">
+						<div class="inner-content">
+							<div class="row">
+								<div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
+									<article class="blog-post-wrapper sticky">
+										<div class="entry-content">
+											<p>在下方输入框中输入文字（如“你好”），系统将自动为您播放对应的手语教学或翻译视频。该技术旨在打破交流障碍，实现无障碍沟通。</p>
+										</div>
+
+										<!-- 视频播放区域替换了原来的图片 -->
+										<div class="video-container">
+											<video id="signLanguageVideo" controls poster="static/img/blog/blog-2.jpg">
+												<source id="videoSource" src="" type="video/mp4">
+												您的浏览器不支持视频播放。
+											</video>
+										</div>
+
+										<!-- 翻译交互区域 -->
+										<footer class="translation-controls">
+											<div class="input-group input-group-lg">
+												<input type="text" id="signInput" class="form-control" placeholder="请输入文本">
+												<span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="button" onclick="playSignLanguage()">开始翻译</button>
+                                                </span>
+											</div>
+											<p id="errorTips">抱歉，未找到该词条的手语视频，请尝试：你好、你吃了吗...</p>
+										</footer>
+									</article>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 核心逻辑脚本 -->
+				<script>
+					function playSignLanguage() {
+						var input = document.getElementById('signInput').value.trim();
+						var videoElement = document.getElementById('signLanguageVideo');
+						var videoSource = document.getElementById('videoSource');
+						var errorTips = document.getElementById('errorTips');
+
+						// 词义与视频文件路径的对应关系
+						// 请确保这些文件确实存在于 static/video/ 目录下
+						var videoMap = {
+							"你好": "static/video/nihao.mp4",
+							"你吃了吗？吃了什么？": "static/video/chilema.mp4",
+							"我的衣服送去干洗了但是还是缩水了": "static/video/chileshenme.mp4",
+							"今天要干什么": "static/video/ganshenme.mp4"
+						};
+
+						if (videoMap[input]) {
+							errorTips.style.display = 'none';
+							// 切换视频路径
+							videoSource.src = videoMap[input];
+							// 核心：重新加载视频并播放
+							videoElement.load();
+							videoElement.play();
+						} else {
+							errorTips.style.display = 'block';
+						}
+					}
+
+					// 监听回车键
+					document.getElementById('signInput').onkeypress = function(e){
+						if (!e) e = window.event;
+						if (e.keyCode == '13'){
+							playSignLanguage();
+							return false;
+						}
+					}
+				</script>
+
+				<!-- 页脚保持不变 -->
+				<section class="footer-widget-wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-sm-12">
+								<div class="footer-widget">
+									<h3 class="wow fadeInDown">订阅通讯</h3>
+									<form class="wow fadeInDown">
+										<div class="form-group">
+											<label class="sr-only" for="exampleInputEmail1">电子邮箱地址</label>
+											<input type="email" class="form-control" id="exampleInputEmail1" placeholder="电子邮箱">
+										</div>
+										<button type="submit" class="btn btn-primary">订阅</button>
+									</form>
+								</div>
+							</div>
+							<!-- ... 后面页脚部分建议保留原样 ... -->
+						</div>
+					</div>
+				</section>
+
+				<footer class="footer-wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="copyright">
+									<p>Copyright &copy; 2018. Silent Partner All rights reserved.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+	<!-- 脚本引用保持不变 -->
+	<script src="static/js/jquery.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	<script src="static/js/wow.min.js"></script>
+	<script src="static/owl-carousel/owl.carousel.min.js"></script>
+	<script src="static/js/smoothscroll.js"></script>
+	<script src="static/js/hippo-offcanvas.js"></script>
+	<script src="static/js/scripts.js"></script>
+</body>
+</html>
